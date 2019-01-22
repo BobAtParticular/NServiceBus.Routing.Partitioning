@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net461</TargetFramework>
+    <TargetFrameworks>net461</TargetFrameworks>
     <RuntimeIdentifier>win7-x64</RuntimeIdentifier>
     <LangVersion>7.1</LangVersion>
   </PropertyGroup>
