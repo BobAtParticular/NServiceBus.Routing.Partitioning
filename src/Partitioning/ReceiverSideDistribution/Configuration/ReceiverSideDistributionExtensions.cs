@@ -11,12 +11,14 @@ namespace NServiceBus
         {
             var settings = routingSettings.GetSettings();
 
-            if (!settings.TryGet(out PartitionAwareReceiverSideDistributionConfiguration config))
+            if (settings.TryGet(out PartitionAwareReceiverSideDistributionConfiguration config))
             {
-                config = new PartitionAwareReceiverSideDistributionConfiguration(routingSettings, discriminators);
-                settings.Set<PartitionAwareReceiverSideDistributionConfiguration>(config);
-                settings.Set(typeof(ReceiverSideDistribution).FullName, FeatureState.Enabled);
+                return config;
             }
+
+            config = new PartitionAwareReceiverSideDistributionConfiguration(routingSettings, discriminators);
+            settings.Set<PartitionAwareReceiverSideDistributionConfiguration>(config);
+            settings.Set(typeof(ReceiverSideDistribution).FullName, FeatureState.Enabled);
 
             return config;
         }
